@@ -12,15 +12,8 @@ const translatePigLatin = ([head, ...tail], acc = []) => {
   if (!head) return acc.concat(["ay"]).join("");
   if (vowels.includes(head)) {
     return acc.length === 0
-      ? [head]
-          .concat(tail)
-          .concat("way")
-          .join("")
-      : [head]
-          .concat(tail)
-          .concat(acc)
-          .concat("ay")
-          .join("");
+      ? [head, ...tail, ..."way"].join("")
+      : [head, ...tail, ...acc, ..."ay"].join("");
   } else {
     return translatePigLatin(tail, acc.concat([head]));
   }
