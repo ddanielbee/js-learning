@@ -1,2 +1,3 @@
 # js-learning
-Results of learning resources 
+
+Results of learning resources around JS.
