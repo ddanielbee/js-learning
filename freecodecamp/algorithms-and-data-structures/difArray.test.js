@@ -2,12 +2,30 @@
 
 In other words, return the symmetric difference of the two arrays. */
 
-const diffArrays = () => [];
+const arrayIntersection = (firstArray, secondArray) => {
+  return firstArray.reduce((acc, cur) => {
+    if (!secondArray.includes(cur)) {
+      return acc.concat([cur]);
+    }
+    return acc;
+  }, []);
+};
+
+const diffArray = (firstArray, secondArray) => {
+  return arrayIntersection(firstArray, secondArray).concat(
+    arrayIntersection(secondArray, firstArray)
+  );
+};
 
 describe.only("diffArrays", () => {
   it("should return an empty array for identical arrays", () => {
     const expected = [];
-    const actual = diffArrays([1, 2, 3], [1, 2, 3]);
+    const actual = diffArray([1, 2, 3], [1, 2, 3]);
+    expect(actual).toEqual(expected);
+  });
+  it("should return [4]", () => {
+    const expected = [4];
+    const actual = diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
     expect(actual).toEqual(expected);
   });
 });
