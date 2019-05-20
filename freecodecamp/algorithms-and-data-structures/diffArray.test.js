@@ -17,7 +17,7 @@ const diffArray = (firstArray, secondArray) => {
   );
 };
 
-describe.only("diffArrays", () => {
+describe("diffArrays", () => {
   it("should return an empty array for identical arrays", () => {
     const expected = [];
     const actual = diffArray([1, 2, 3], [1, 2, 3]);
